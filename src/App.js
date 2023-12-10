@@ -12,7 +12,7 @@ function App() {
       completed: false
     }
     try {
-      const response = await axios.post('http://localhost:3000/todo', data);
+      const response = await axios.post('http://localhost:6y000/todo', data);
         console.log(response)
     //    fetchTodos()
     //   setTodos([...todos, response.data]);
