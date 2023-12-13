@@ -15,7 +15,7 @@ function App() {
         try {
            const respose = await axios.get('http://localhost:5000/todos');
            console.log(respose.data)
-           setTodos(response.data); 
+        //    setTodos(response.data); 
         } catch (error) {
             console.error(error);
         }
@@ -30,19 +30,22 @@ function App() {
        try {
         const response = await axios.post('http://localhost:5000/todos',data);
         fetchTodos()
-        // setTodos([...todos,response.data]);
+        
+        setTodos([...todos,response.data]);
         setNewTodo(''); 
+
        } catch (error){
         console.error(error);
        }
     };
 
-    const deleteRodo = async (id) => {
+    const deleteTodo = async (id) => {
         try {
-            await axios.delete('http://localhost:5000/Todos/${id}');
+            await axios.delete(`http://localhost:5000/todos/${id}`);   //"http://localhost:5000/todos/65578f561b05a77b939ce845"
 
 
             fetchTodos()
+           setTodos(todos.filter(todo => todo._id !==id));
 
         } catch (error) {
             console.error(error);
